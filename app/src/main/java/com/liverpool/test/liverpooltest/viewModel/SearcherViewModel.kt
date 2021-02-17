@@ -36,18 +36,19 @@ class SearcherViewModel : ViewModel() {
         if (Connection.isConnected(BaseApplication.context)){
             viewModelScope.launch {
                 try{
-                    val result = withContext(Dispatchers.Main){
+                    Log.d(Constants.LOG_TAG,stringSearch)
+                    val result = withContext(Dispatchers.IO){
                         repository.getValidator(Constants.IS_RETROFIT)?.getPlpState(stringSearch)
                     }
                     if (result != null){
                         _pettionstatus.postValue(Constants.pettionStatus.SUCCESS)
+                        _plpState.value = result.plpState
                         calculateRecordsPerPage()
                     }
                     else{
                         _pettionstatus.postValue(Constants.pettionStatus.ERROR_REQUEST)
                     }
                 }catch (e : Throwable){
-                    Log.d(Constants.LOG_TAG, "Error aqui cath")
                     _pettionstatus.postValue(Constants.pettionStatus.ERROR_REQUEST)
                 }
             }
@@ -58,13 +59,13 @@ class SearcherViewModel : ViewModel() {
     }
 
     fun calculateRecordsPerPage(){
+
         val numRecords =  _plpState.value?.totalNumRecs
         if(numRecords  != 0){
             recordsPerPage = numRecords!!/maxPage
             getRecords()
         }
         else{
-            Log.d(Constants.LOG_TAG, "Error aqui")
             _pettionstatus.postValue(Constants.pettionStatus.WITHOUT_RESULT)
         }
     }
