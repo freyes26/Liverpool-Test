@@ -1,6 +1,7 @@
 package com.liverpool.test.liverpooltest
 
 import android.app.Application
+import android.content.Context
 import com.facebook.stetho.Stetho
 import com.liverpool.test.liverpool.Constants
 import com.liverpool.test.liverpooltest.repository.database.SearchDatabase
@@ -12,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class BaseApplication : Application() {
     companion object{
         lateinit var application: BaseApplication
+        lateinit var context: Context
     }
 
     private val retrofitConfig : Retrofit by lazy { Retrofit.Builder()
@@ -27,6 +29,7 @@ class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         application = this
+        context = this.applicationContext
         Stetho.initializeWithDefaults(this)
     }
 }
