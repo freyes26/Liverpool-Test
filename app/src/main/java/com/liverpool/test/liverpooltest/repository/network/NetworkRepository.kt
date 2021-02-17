@@ -16,8 +16,8 @@ class NetworkRepository : Repository {
             pageNumber: Int,
             itemsPerPage: Int
     ): List<Records>? {
-        val options: MutableMap<String, String> = mutableMapOf()
-        options[Constants.parameters.Force_PHP] = "true"
+        val options : MutableMap<String,String> = mutableMapOf()
+        options[Constants.parameters.FORCE_PHP] = "true"
         options[Constants.parameters.SEARCH_STRING] = search
         options[Constants.parameters.PAGE_NUMBER] = pageNumber.toString()
         options[Constants.parameters.ITEMS_PER_PAGE] = itemsPerPage.toString()
@@ -28,8 +28,8 @@ class NetworkRepository : Repository {
     //Get the number of results obtained from the search,
     //receives the search string as parameters
     override suspend fun getPlpState(search: String): PlpResults? {
-        val options: MutableMap<String, String> = mutableMapOf()
-        options[Constants.parameters.Force_PHP] = "true"
+        val options : MutableMap<String,String> = mutableMapOf()
+        options[Constants.parameters.FORCE_PHP] = "true"
         options[Constants.parameters.SEARCH_STRING] = search
         return BaseApplication.application.rest.getProducts(options)?.plpResults
     }

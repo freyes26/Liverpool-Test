@@ -7,4 +7,9 @@
     <string name="title_search">Buscador</string>
     <string name="searcher_hint">Buscar Producto</string>
     <string name="delete_all">Eliminar todos los elementos</string>
+    <string name="close">Cerrar</string>
+    <string name="activity_null">Activity can not be null</string>
+    <string name="without__internet">No se cuenta con internet</string>
+    <string name="error_message">Algo salio mal</string>
+    <string name="without_result">Sin resultados para mostrar</string>
 </resources>
