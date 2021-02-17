@@ -8,6 +8,7 @@
     const val LOG_TAG = "LIVERPOOL"
     const val DIALOG_TAG = "Dialog_tag"
 
+
      object retrofitConstants {
          const val BASE_URL = "https://shoppapp.liverpool.com.mx/"
      }
@@ -23,6 +24,7 @@
         const val PAGE_NUMBER = "page-number"
         const val ITEMS_PER_PAGE = "number-of-items-per-page"
     }
+
 
     object pettionStatus{
         const val WITHOUT_STATUS = 0
