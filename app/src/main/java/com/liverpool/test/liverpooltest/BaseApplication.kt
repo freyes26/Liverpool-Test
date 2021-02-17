@@ -10,17 +10,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class BaseApplication : Application() {
-    companion object{
+    companion object {
         lateinit var application: BaseApplication
     }
 
-    private val retrofitConfig : Retrofit by lazy { Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(Constants.retrofitConstants.BASE_URL)
-        .build()
+    private val retrofitConfig: Retrofit by lazy {
+        Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Constants.retrofitConstants.BASE_URL)
+                .build()
     }
 
-    val rest by lazy { ApiRetrofit(application.retrofitConfig).create(RestApi ::class.java) }
+    val rest by lazy { ApiRetrofit(application.retrofitConfig).create(RestApi::class.java) }
     val database by lazy { SearchDatabase.getDatabase(applicationContext) }
 
 

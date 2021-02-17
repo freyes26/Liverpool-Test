@@ -7,7 +7,7 @@ import com.liverpool.test.liverpool.Constants
 
 @Entity(tableName = Constants.databseConstants.SEARCH_TABLE)
 class Search(
-    @PrimaryKey(autoGenerate = true) val id: Int?,
-    @ColumnInfo(name = "search") val search: String
+        @PrimaryKey(autoGenerate = true) val id: Int?,
+        @ColumnInfo(name = "search") val search: String
 ) {
 }

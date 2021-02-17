@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_history">Historial</string>
+    <string name="title_search">Buscador</string>
+    <string name="searcher_hint">Buscar Producto</string>
+    <string name="delete_all">Eliminar todos los elementos</string>
 </resources>

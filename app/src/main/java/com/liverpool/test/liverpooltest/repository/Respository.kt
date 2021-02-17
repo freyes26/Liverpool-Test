@@ -4,7 +4,7 @@ import com.liverpool.test.liverpooltest.repository.network.json.response.PlpResu
 import com.liverpool.test.liverpooltest.repository.network.json.response.Records
 
 interface Repository {
-    suspend fun getProducts(search :String,pageNumber : Int,itemsPerPage : Int  ) : List<Records>?
+    suspend fun getProducts(search: String, pageNumber: Int, itemsPerPage: Int): List<Records>?
 
-    suspend fun getPlpState(search :String) : PlpResults?
+    suspend fun getPlpState(search: String): PlpResults?
 }
