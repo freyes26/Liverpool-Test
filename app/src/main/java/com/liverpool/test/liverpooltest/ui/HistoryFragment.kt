@@ -1,13 +1,11 @@
 package com.liverpool.test.liverpooltest.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.liverpool.test.liverpool.Constants
 import com.liverpool.test.liverpooltest.R
 import com.liverpool.test.liverpooltest.databinding.FragmentHistoryBinding
 import com.liverpool.test.liverpooltest.repository.database.model.Search
@@ -26,7 +24,7 @@ class HistoryFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private val historyViewModel: HistoryViewModel by viewModels()
+    private val historyViewModel: HistoryViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -53,11 +51,25 @@ class HistoryFragment : Fragment() {
         inflater.inflate(R.menu.history_menu, menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.delete_all -> {
+                historyViewModel.deleteAll()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun actionOnClick(search: Search) {
-        Log.d(Constants.LOG_TAG, "click")
+        historyViewModel.delete(search)
     }
 
     fun makeApiCall() {
-        adapter.submitList(historyViewModel.allSearch)
+        historyViewModel.allSearch.observe(requireActivity(), {
+            it.let {
+                adapter.submitList(it as MutableList<Search>)
+            }
+        })
     }
 }

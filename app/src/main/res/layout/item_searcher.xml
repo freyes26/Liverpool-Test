@@ -8,10 +8,6 @@
         <variable
             name="item"
             type="com.liverpool.test.liverpooltest.repository.network.json.response.Records" />
-
-        <variable
-            name="itemRecordListener"
-            type="com.liverpool.test.liverpooltest.ui.adapter.ItemRecordListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +19,6 @@
             android:id="@+id/thumb_image"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:onClick="@{() -> itemRecordListener.onClick(item)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
