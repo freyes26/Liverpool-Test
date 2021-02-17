@@ -8,7 +8,7 @@ class ValidatorFactory {
 
 
     //This method allows you to obtain a repository depending on the selector
-    fun getValidator(selector : String) : Repository? = when {
+    fun getValidator(selector: String): Repository? = when {
         isRetrofit(selector) -> NetworkRepository()
         isRetrofit(selector) -> DatabaseRepository()
         else -> null

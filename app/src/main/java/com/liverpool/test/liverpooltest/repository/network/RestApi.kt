@@ -6,5 +6,5 @@ import retrofit2.http.QueryMap
 
 interface RestApi {
     @GET("/appclienteservices/services/v3/plp?")
-    suspend fun getProducts(@QueryMap options: Map<String, String>) : ResponseGetProducts?
+    suspend fun getProducts(@QueryMap options: Map<String, String>): ResponseGetProducts?
 }
