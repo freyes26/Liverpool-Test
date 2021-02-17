@@ -16,7 +16,7 @@ interface SearchDao {
     fun deleteAll()
 
     @Query("DELETE FROM Search WHERE id = :id")
-    fun delete(id : Int)
+    fun delete(id: Int)
 
     @Update
     fun upsate(note: Search)

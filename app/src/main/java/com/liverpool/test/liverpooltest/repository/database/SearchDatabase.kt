@@ -10,7 +10,7 @@ import com.liverpool.test.liverpooltest.repository.database.model.Search
 
 @Database(entities = [Search::class], version = 1, exportSchema = false)
 abstract class SearchDatabase : RoomDatabase() {
-    abstract fun serachDao() : SearchDao
+    abstract fun serachDao(): SearchDao
 
     companion object {
         @Volatile
@@ -19,11 +19,11 @@ abstract class SearchDatabase : RoomDatabase() {
         fun getDatabase(context: Context): SearchDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    SearchDatabase::class.java,
-                    Constants.databseConstants.DATABASE_NAME
+                        context.applicationContext,
+                        SearchDatabase::class.java,
+                        Constants.databseConstants.DATABASE_NAME
                 )
-                    .build()
+                        .build()
                 INSTANCE = instance
                 instance
             }
