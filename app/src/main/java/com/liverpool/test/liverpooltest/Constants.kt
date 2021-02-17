@@ -11,6 +11,11 @@
          const val BASE_URL = "https://shoppapp.liverpool.com.mx/"
      }
 
+     object databseConstants {
+         const val DATABASE_NAME = "Search_Database"
+         const val SEARCH_TABLE = "Search"
+     }
+
      object parameters {
          const val Force_PHP = "force-plp"
          const val SEARCH_STRING = "search-string"

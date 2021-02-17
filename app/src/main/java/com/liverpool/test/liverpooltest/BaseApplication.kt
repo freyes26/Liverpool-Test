@@ -3,6 +3,7 @@ package com.liverpool.test.liverpooltest
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.liverpool.test.liverpool.Constants
+import com.liverpool.test.liverpooltest.repository.database.SearchDatabase
 import com.liverpool.test.liverpooltest.repository.network.ApiRetrofit
 import com.liverpool.test.liverpooltest.repository.network.RestApi
 import retrofit2.Retrofit
@@ -20,6 +21,8 @@ class BaseApplication : Application() {
     }
 
     val rest by lazy { ApiRetrofit(application.retrofitConfig).create(RestApi ::class.java) }
+    val database by lazy { SearchDatabase.getDatabase(applicationContext) }
+
 
     override fun onCreate() {
         super.onCreate()
