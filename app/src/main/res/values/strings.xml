@@ -12,4 +12,5 @@
     <string name="without__internet">No se cuenta con internet</string>
     <string name="error_message">Algo salio mal</string>
     <string name="without_result">Sin resultados para mostrar</string>
+    <string name="invalidString">Ingrese un valor valido</string>
 </resources>

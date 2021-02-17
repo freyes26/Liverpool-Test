@@ -2,10 +2,15 @@ package com.liverpool.test.liverpooltest.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.liverpool.test.liverpooltest.BaseApplication
+import com.liverpool.test.liverpooltest.R
 import com.liverpool.test.liverpooltest.databinding.ItemSearcherBinding
+import com.liverpool.test.liverpooltest.repository.network.Connection
 import com.liverpool.test.liverpooltest.repository.network.json.response.Records
 
 class SearcherAdapter(val recordListener: ItemRecordListener) :
@@ -23,8 +28,20 @@ class SearcherAdapter(val recordListener: ItemRecordListener) :
     class SearchViewHolder private constructor(private val binding: ItemSearcherBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Records, recordListener: ItemRecordListener) {
             binding.item = item
-            binding.itemRecordListener = recordListener
+            binding.thumbImage.setOnClickListener {
+                recordListener.onClickListener(item,binding.thumbImage)
+            }
+            setImage(item.smImage)
             binding.executePendingBindings()
+        }
+
+        fun setImage(image : String){
+            if(Connection.isConnected(BaseApplication.context)){
+                Glide.with(BaseApplication.context).load(image).into(binding.thumbImage)
+            }
+            else{
+                binding.thumbImage.setImageResource(R.drawable.ic_baseline_wifi_off_24)
+            }
         }
 
         companion object {
@@ -49,6 +66,6 @@ class SearcherAdapter(val recordListener: ItemRecordListener) :
     }
 }
 
-class ItemRecordListener(val onClickListener: (Records) -> Unit) {
-    fun onClick(records: Records) = onClickListener(records)
+class ItemRecordListener(val onClickListener: (Records, ImageView) -> Unit) {
+    fun onClick(records: Records, imageView: ImageView) = onClickListener(records,imageView)
 }
