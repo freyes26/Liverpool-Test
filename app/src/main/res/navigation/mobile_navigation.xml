@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.liverpool.test.liverpooltest.ui.SearchFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.liverpool.test.liverpooltest.ui.HistoryFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 
 </navigation>

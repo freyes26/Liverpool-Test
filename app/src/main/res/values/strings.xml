@@ -13,4 +13,7 @@
     <string name="error_message">Algo salio mal</string>
     <string name="without_result">Sin resultados para mostrar</string>
     <string name="invalidString">Ingrese un valor valido</string>
+    <string name="Back">Anterior</string>
+    <string name="concurrent">1</string>
+    <string name="next">Siguiente</string>
 </resources>
