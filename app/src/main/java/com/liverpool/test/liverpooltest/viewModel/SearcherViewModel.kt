@@ -27,8 +27,8 @@ class SearcherViewModel : ViewModel() {
     val pettionstatus : LiveData<Int> get() = _pettionstatus
     private var _plpState : MutableLiveData<PlpState> = MutableLiveData()
 
-    private var page = 1
-    private var maxPage = 10
+    var page = 1
+    var maxPage = 10
     private var recordsPerPage = 0
 
 
@@ -43,6 +43,7 @@ class SearcherViewModel : ViewModel() {
                     if (result != null){
                         _pettionstatus.postValue(Constants.pettionStatus.SUCCESS)
                         _plpState.value = result.plpState
+                        page =1
                         calculateRecordsPerPage()
                     }
                     else{
@@ -60,9 +61,11 @@ class SearcherViewModel : ViewModel() {
 
     fun calculateRecordsPerPage(){
 
-        val numRecords =  _plpState.value?.totalNumRecs
-        if(numRecords  != 0){
-            recordsPerPage = numRecords!!/maxPage
+        val totalRecords =  _plpState.value?.totalNumRecs
+        if(totalRecords  != 0){
+            recordsPerPage =  _plpState.value!!.recsPerPage
+            maxPage = totalRecords!! / recordsPerPage
+
             getRecords()
         }
         else{
@@ -104,5 +107,19 @@ class SearcherViewModel : ViewModel() {
                 daoSearch.insert(Search(null,stringSearch))
             }
         }
+    }
+
+    fun existBack() = page > 1
+
+    fun existNext() = page < maxPage
+
+    fun onBackPage(){
+        page -= 1
+        getRecords()
+    }
+
+    fun onNextPage(){
+        page += 1
+        getRecords()
     }
 }

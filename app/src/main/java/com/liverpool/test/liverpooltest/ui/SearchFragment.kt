@@ -63,6 +63,12 @@ class SearchFragment : Fragment() {
             getAlLRecords()
         }
         binding.searcher.setOnKeyListener{ view, keyCode,_  ->handleKeyEvent(view,keyCode)}
+        binding.back.setOnClickListener{
+            searcherViewModel.onBackPage()
+        }
+        binding.next.setOnClickListener{
+            searcherViewModel.onNextPage()
+        }
     }
 
     private fun getAlLRecords(){
@@ -108,19 +114,52 @@ class SearchFragment : Fragment() {
             Constants.pettionStatus.ERROR_REQUEST -> {
                 val dialog = DialogMessage(getString(R.string.error_message), CloseListener {restartStatus()})
                 dialog.show(requireActivity().supportFragmentManager, Constants.DIALOG_TAG)
+                hiddenPage()
             }
             Constants.pettionStatus.WITHOUTINTERNET -> {
                 val dialog = DialogMessage(getString(R.string.without__internet), CloseListener {restartStatus()})
                 dialog.show(requireActivity().supportFragmentManager, Constants.DIALOG_TAG)
+                hiddenPage()
             }
             Constants.pettionStatus.WITHOUT_RESULT -> {
                 val dialog = DialogMessage(getString(R.string.without_result), CloseListener {restartStatus()})
                 dialog.show(requireActivity().supportFragmentManager, Constants.DIALOG_TAG)
+                hiddenPage()
             }
-            else -> {}
+            Constants.pettionStatus.SUCCESS -> {
+                showPage()
+            }
+            else->{}
         }
 
     }
+
+
+    private fun showPage(){
+        if (searcherViewModel.existBack()){
+            binding.back.visibility = View.VISIBLE
+        }
+        else{
+            binding.back.visibility = View.INVISIBLE
+        }
+
+        if(searcherViewModel.existNext()){
+            binding.next.visibility = View.VISIBLE
+        }
+        else{
+            binding.next.visibility = View.INVISIBLE
+        }
+
+        binding.concurrent.visibility = View.VISIBLE
+        binding.concurrent.text = "${searcherViewModel.page}...${searcherViewModel.maxPage}"
+    }
+
+    fun hiddenPage(){
+        binding.concurrent.visibility = View.INVISIBLE
+        binding.back.visibility = View.INVISIBLE
+        binding.next.visibility = View.INVISIBLE
+    }
+
 
     private fun restartStatus(){
         searcherViewModel.resetPetitionStatus()
