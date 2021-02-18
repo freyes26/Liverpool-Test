@@ -1,4 +1,4 @@
-package com.liverpool.test.liverpooltest.ui.Dialog
+package com.liverpool.test.liverpooltest.ui.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

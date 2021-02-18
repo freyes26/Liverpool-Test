@@ -26,8 +26,8 @@ import com.liverpool.test.liverpooltest.R
 import com.liverpool.test.liverpooltest.databinding.FragmentSearchBinding
 import com.liverpool.test.liverpooltest.repository.network.Connection
 import com.liverpool.test.liverpooltest.repository.network.json.response.Records
-import com.liverpool.test.liverpooltest.ui.Dialog.CloseListener
-import com.liverpool.test.liverpooltest.ui.Dialog.DialogMessage
+import com.liverpool.test.liverpooltest.ui.dialog.CloseListener
+import com.liverpool.test.liverpooltest.ui.dialog.DialogMessage
 import com.liverpool.test.liverpooltest.ui.adapter.ItemRecordListener
 import com.liverpool.test.liverpooltest.ui.adapter.SearcherAdapter
 import com.liverpool.test.liverpooltest.viewModel.SearcherViewModel
