@@ -42,6 +42,7 @@ class SearcherViewModel : ViewModel() {
                     if (result != null){
                         _pettionstatus.postValue(Constants.pettionStatus.SUCCESS)
                         _plpState.value = result.plpState
+                        page =1
                         calculateRecordsPerPage()
                     }
                     else{
