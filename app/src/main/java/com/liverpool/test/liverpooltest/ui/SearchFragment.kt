@@ -18,7 +18,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.liverpool.test.liverpool.Constants
@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
     private lateinit var _binding: FragmentSearchBinding
     val binding: FragmentSearchBinding get() = _binding
 
-    private val searcherViewModel: SearcherViewModel by activityViewModels()
+    private val searcherViewModel: SearcherViewModel by viewModels()
 
     private lateinit var adapter: SearcherAdapter
 
@@ -134,6 +134,7 @@ class SearchFragment : Fragment() {
 
     }
 
+
     private fun showPage(){
         if (searcherViewModel.existBack()){
             binding.back.visibility = View.VISIBLE
@@ -158,6 +159,7 @@ class SearchFragment : Fragment() {
         binding.back.visibility = View.INVISIBLE
         binding.next.visibility = View.INVISIBLE
     }
+
 
     private fun restartStatus(){
         searcherViewModel.resetPetitionStatus()

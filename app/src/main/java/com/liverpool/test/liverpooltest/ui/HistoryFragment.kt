@@ -19,12 +19,14 @@ class HistoryFragment : Fragment() {
 
     private lateinit var adapter: HistoryAdapter
 
+    private val historyViewModel: HistoryViewModel by activityViewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
-    private val historyViewModel: HistoryViewModel by activityViewModels()
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
